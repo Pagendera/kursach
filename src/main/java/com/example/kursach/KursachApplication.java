@@ -1,13 +1,13 @@
-package com.example.demo22;
+package com.example.kursach;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Demo22Application {
+public class KursachApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Demo22Application.class, args);
+        SpringApplication.run(KursachApplication.class, args);
     }
 
 }
