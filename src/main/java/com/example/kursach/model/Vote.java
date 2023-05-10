@@ -13,7 +13,7 @@ public class Vote {
     private Long id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "pretendent_id", nullable = false)
-    private Pretendent pretendent;
+    @JoinColumn(name = "pretendant_id", nullable = false)
+    private Pretendant pretendant;
 
 }

@@ -1,6 +1,6 @@
 package com.example.kursach.controller;
 
-import com.example.kursach.controller.payload.mapper.CreatedPretendentsMapper;
+import com.example.kursach.controller.payload.mapper.CreatedPretendantMapper;
 import com.example.kursach.controller.payload.mapper.CreatedVotingMapper;
 import com.example.kursach.model.Voting;
 import com.example.kursach.service.VotingService;
@@ -16,7 +16,7 @@ public class VotingController {
 
     private final VotingService votingService;
     private final CreatedVotingMapper createdVotingMapper;
-    private final CreatedPretendentsMapper createdPretendentsMapper;
+    private final CreatedPretendantMapper createdPretendantMapper;
 
     @GetMapping
     public String findAll(Model model){
@@ -28,7 +28,7 @@ public class VotingController {
     public String findById(@PathVariable Long id, Model model){
         Voting voting = votingService.findById(id);
         model.addAttribute("voting",createdVotingMapper.doPayload(voting));
-        model.addAttribute("pretendents", createdPretendentsMapper.doPayload(voting.getPretendents()));
+        model.addAttribute("pretendants", createdPretendantMapper.doPayload(voting.getPretendants()));
         return "voting";
     }
 

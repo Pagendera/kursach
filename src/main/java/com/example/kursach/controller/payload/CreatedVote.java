@@ -7,5 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class CreatedVote {
     private Long id;
-    private Long pretendentId;
+    private Long pretendantId;
 }

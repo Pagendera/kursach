@@ -16,7 +16,7 @@ public class Voting {
     private Long id;
 
     @OneToMany(mappedBy = "voting", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Pretendent> pretendents = new ArrayList<>();
+    private List<Pretendant> pretendants = new ArrayList<>();
 
     @Column(name = "name", nullable = false)
     private String name;

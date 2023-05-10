@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(uses = CreatedPretendentsMapper.class, componentModel = "spring")
+@Mapper(uses = CreatedPretendantMapper.class, componentModel = "spring")
 public interface CreatedVotingMapper {
 
     CreatedVoting doPayload(Voting voting);

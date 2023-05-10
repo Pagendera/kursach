@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface CreatedVoteMapper {
 
-    @Mapping(target = "pretendentId", source = "pretendent.id")
+    @Mapping(target = "pretendantId", source = "pretendant.id")
     CreatedVote doPayload(Vote vote);
 
     List<CreatedVote> doPayload(List<Vote> votes);

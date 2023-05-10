@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class CreatedPretendent {
+public class CreatedPretendant {
     private Long id;
     private Long votingId;
     private String name;

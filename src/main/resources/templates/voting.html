@@ -6,17 +6,17 @@
 </head>
 <body>
 <p th:text="${voting.description}"></p>
-<div th:text="${voting.createdPretendents}"></div>
+<div th:text="${voting.createdPretendants}"></div>
 <table>
   <tr>
     <th>ID</th>
     <th>NAME</th>
     <th>DESCRIPTION</th>
   </tr>
-  <tr th:each="pretendent : ${pretendents}">
-    <td th:text="${pretendent.id}"></td>
-    <td th:text="${pretendent.name}"></td>
-    <td th:text="${pretendent.description}"></td>
+  <tr th:each="pretendant : ${pretendants}">
+    <td th:text="${pretendant.id}"></td>
+    <td th:text="${pretendant.name}"></td>
+    <td th:text="${pretendant.description}"></td>
   </tr>
 </table>
 </body>

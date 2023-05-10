@@ -11,5 +11,5 @@ public class CreatedVoting {
     private Long id;
     private String name;
     private String description;
-    private List<CreatedPretendent> createdPretendents;
+    private List<CreatedPretendant> createdPretendants;
 }
