@@ -7,9 +7,7 @@ import com.example.kursach.service.VotingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/votings")
@@ -32,6 +30,14 @@ public class VotingController {
         model.addAttribute("voting",createdVotingMapper.doPayload(voting));
         model.addAttribute("pretendents", createdPretendentsMapper.doPayload(voting.getPretendents()));
         return "voting";
+    }
+
+
+
+    @PostMapping ("/delete/{id}")
+    public String deleteById(@PathVariable Long id){
+        votingService.deleteById(id);
+        return "redirect:/votings";
     }
 
 }

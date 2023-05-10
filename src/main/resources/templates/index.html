@@ -11,12 +11,21 @@
         <th>ID</th>
         <th>NAME</th>
         <th>DESCRIPTION</th>
+
     </tr>
     <tr th:each="voting : ${votings}">
         <td th:text="${voting.id}"></td>
         <td><a th:href="@{/votings/{id}(id=${voting.id})}" th:text="${voting.name}"></a></td>
         <td th:text="${voting.description}"></td>
+        <td>
+            <form th:action="@{/votings/delete/{id}(id=${voting.id})}" method="post">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit">Видалити</button>
+            </form>
+        </td>
     </tr>
 </table>
+
+
 </body>
 </html>

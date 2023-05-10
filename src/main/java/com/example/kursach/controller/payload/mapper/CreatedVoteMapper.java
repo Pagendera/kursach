@@ -1,8 +1,6 @@
 package com.example.kursach.controller.payload.mapper;
 
-import com.example.kursach.controller.payload.CreatedPretendent;
 import com.example.kursach.controller.payload.CreatedVote;
-import com.example.kursach.model.Pretendent;
 import com.example.kursach.model.Vote;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
