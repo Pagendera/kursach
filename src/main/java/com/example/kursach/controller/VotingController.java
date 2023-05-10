@@ -32,12 +32,34 @@ public class VotingController {
         return "voting";
     }
 
+    @PostMapping
+    public String save(@RequestParam String name,
+                       @RequestParam String description){
+        Voting voting = new Voting();
+        voting.setName(name);
+        voting.setDescription(description);
 
+        votingService.save(voting);
+        return "redirect:/votings";
+    }
+
+    @PostMapping ("/update/{id}")
+    public String deleteById(@PathVariable Long id,
+                             @RequestParam String name,
+                             @RequestParam String description){
+        Voting voting = new Voting();
+        voting.setName(name);
+        voting.setDescription(description);
+        voting.setId(id);
+        voting.setPretendants(votingService.findById(id).getPretendants());
+        votingService.save(voting);
+
+        return "redirect:/votings";
+    }
 
     @PostMapping ("/delete/{id}")
     public String deleteById(@PathVariable Long id){
         votingService.deleteById(id);
         return "redirect:/votings";
     }
-
 }

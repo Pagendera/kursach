@@ -7,6 +7,15 @@
 <body>
 <p th:text="${voting.description}"></p>
 <div th:text="${voting.createdPretendants}"></div>
+
+<p>Update</p>
+<form th:action="@{/votings/update/{id}(id=${voting.id})}" method="post">
+  <input type="hidden" name="_method" value="put" />
+  <input type="text" name="name">
+  <input type="text" name="description">
+  <button type="submit">Створити голосування</button>
+</form>
+
 <table>
   <tr>
     <th>ID</th>

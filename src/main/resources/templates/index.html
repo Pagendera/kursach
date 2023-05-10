@@ -8,13 +8,11 @@
 
 <table>
     <tr>
-        <th>ID</th>
         <th>NAME</th>
         <th>DESCRIPTION</th>
 
     </tr>
     <tr th:each="voting : ${votings}">
-        <td th:text="${voting.id}"></td>
         <td><a th:href="@{/votings/{id}(id=${voting.id})}" th:text="${voting.name}"></a></td>
         <td th:text="${voting.description}"></td>
         <td>
@@ -25,6 +23,13 @@
         </td>
     </tr>
 </table>
+
+<p>Create</p>
+<form th:action="@{/votings}" method="post">
+    <input type="text" name="name">
+    <input type="text" name="description">
+    <button type="submit">Створити голосування</button>
+</form>
 
 
 </body>
