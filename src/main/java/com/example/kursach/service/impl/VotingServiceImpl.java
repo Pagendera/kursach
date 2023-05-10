@@ -18,8 +18,9 @@ public class VotingServiceImpl implements VotingService {
     private final VotingRepository votingRepository;
 
     @Override
-    public Optional<Voting> findById(Long id) {
-        return votingRepository.findById(id);
+    public Voting findById(Long id) {
+        return votingRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Voting with %s not found".formatted(id)));
     }
 
     @Override

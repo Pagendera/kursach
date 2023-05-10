@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>DESCRIPTION</th>
+    </tr>
+    <tr th:each="voting : ${votings}">
+        <td th:text="${voting.id}"></td>
+        <td><a th:href="@{/votings/{id}(id=${voting.id})}" th:text="${voting.name}"></a></td>
+        <td th:text="${voting.description}"></td>
+    </tr>
+</table>
+</body>
+</html>

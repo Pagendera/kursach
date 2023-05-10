@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${voting.name}"></title>
+</head>
+<body>
+<p th:text="${voting.description}"></p>
+<div th:text="${voting.createdPretendents}"></div>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>DESCRIPTION</th>
+  </tr>
+  <tr th:each="pretendent : ${pretendents}">
+    <td th:text="${pretendent.id}"></td>
+    <td th:text="${pretendent.name}"></td>
+    <td th:text="${pretendent.description}"></td>
+  </tr>
+</table>
+</body>
+</html>

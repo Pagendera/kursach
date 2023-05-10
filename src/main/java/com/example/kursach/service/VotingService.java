@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface VotingService {
 
-    Optional<Voting> findById(Long id);
+    Voting findById(Long id);
 
     List<Voting> findAll();
 
