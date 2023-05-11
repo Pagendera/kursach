@@ -8,4 +8,5 @@ import lombok.Data;
 public class CreatedVote {
     private Long id;
     private Long pretendantId;
+    private String userId;
 }
