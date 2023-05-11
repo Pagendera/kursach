@@ -44,7 +44,7 @@ public class VotingController {
     }
 
     @PostMapping ("/update/{id}")
-    public String deleteById(@PathVariable Long id,
+    public String update(@PathVariable Long id,
                              @RequestParam String name,
                              @RequestParam String description){
         Voting voting = new Voting();
@@ -54,7 +54,7 @@ public class VotingController {
         voting.setPretendants(votingService.findById(id).getPretendants());
         votingService.save(voting);
 
-        return "redirect:/votings";
+        return "redirect:/votings/{id}";
     }
 
     @PostMapping ("/delete/{id}")

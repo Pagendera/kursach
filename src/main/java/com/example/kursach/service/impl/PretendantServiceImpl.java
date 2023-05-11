@@ -16,10 +16,10 @@ public class PretendantServiceImpl implements PretendantService {
     private final PretendentRepository pretendantRepository;
 
     @Override
-    public Optional<Pretendant> findById(Long id) {
-        return pretendantRepository.findById(id);
+    public Pretendant findById(Long id) {
+        return pretendantRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Pretendant with %s not found".formatted(id)));
     }
-
     @Override
     public List<Pretendant> findAll() {
         return pretendantRepository.findAll();

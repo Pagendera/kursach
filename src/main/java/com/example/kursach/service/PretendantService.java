@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PretendantService {
-    Optional<Pretendant> findById(Long id);
+    Pretendant findById(Long id);
 
     List<Pretendant> findAll();
 

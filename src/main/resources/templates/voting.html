@@ -26,7 +26,22 @@
     <td th:text="${pretendant.id}"></td>
     <td th:text="${pretendant.name}"></td>
     <td th:text="${pretendant.description}"></td>
+    <td>
+      <form th:action="@{/pretendants/delete/{id}(id=${pretendant.id})}" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <button type="submit">Видалити</button>
+      </form>
+    </td>
   </tr>
 </table>
+
+
+<p>Create pretendant</p>
+<form th:action="@{/pretendants}" method="post">
+  <input type="hidden" name="votingId" th:value="${voting.id}">
+  <input type="text" name="name">
+  <input type="text" name="description">
+  <button type="submit">Створити претендента</button>
+</form>
 </body>
 </html>
