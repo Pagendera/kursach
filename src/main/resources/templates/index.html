@@ -16,11 +16,13 @@
         <td><a th:href="@{/votings/{id}(id=${voting.id})}" th:text="${voting.name}"></a></td>
         <td th:text="${voting.description}"></td>
         <td>
-            <form th:action="@{/votings/delete/{id}(id=${voting.id})}" method="post">
+            <form th:action="@{/votings/delete/{id}(id=${voting.id})}" method="post" th:if = "${voting.userId} == ${userId}">
                 <input type="hidden" name="_method" value="delete" />
                 <button type="submit">Видалити</button>
             </form>
+
         </td>
+
     </tr>
 </table>
 

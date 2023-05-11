@@ -8,6 +8,7 @@ import com.example.kursach.service.PretendantService;
 import com.example.kursach.service.UserService;
 import com.example.kursach.service.VotingService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.Banner;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,16 +28,25 @@ public class VotingController {
     private final UserService userService;
 
     @GetMapping
-    public String findAll(Model model){
+    public String findAll(Model model, Principal principal){
+        Long userId = userService.findByUsername(principal.getName()).getId();
+
         model.addAttribute("votings",createdVotingMapper.doPayload(votingService.findAll()));
+        model.addAttribute("userId", userId);
+
         return "index";
     }
 
     @GetMapping("/{id}")
-    public String findById(@PathVariable Long id, Model model){
+    public String findById(@PathVariable Long id, Model model, Principal principal){
         Voting voting = votingService.findById(id);
         model.addAttribute("voting",createdVotingMapper.doPayload(voting));
         model.addAttribute("pretendants", createdPretendantMapper.doPayload(voting.getPretendants()));
+
+        Long userId = userService.findByUsername(principal.getName()).getId();
+
+
+        model.addAttribute("userId", userId);
         return "voting";
     }
 
@@ -59,10 +69,11 @@ public class VotingController {
 
     @PostMapping ("/update/{id}")
     public String update(@PathVariable Long id,
-                             @RequestParam String name,
-                             @RequestParam String description,
+                         @RequestParam String name,
+                         @RequestParam String description,
                          Principal principal){
         boolean isAuthor = userService.isVotingsAuthor(id, principal.getName());
+
         if(isAuthor){
             Voting voting = new Voting();
             voting.setName(name);

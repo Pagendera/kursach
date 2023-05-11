@@ -8,8 +8,8 @@
 <p th:text="${voting.description}"></p>
 <div th:text="${voting.createdPretendants}"></div>
 
-<p>Update</p>
-<form th:action="@{/votings/update/{id}(id=${voting.id})}" method="post">
+<p th:if = "${voting.userId} == ${userId}">Update</p>
+<form th:action="@{/votings/update/{id}(id=${voting.id})}" method="post" th:if = "${voting.userId} == ${userId}">
   <input type="hidden" name="_method" value="put" />
   <input type="text" name="name">
   <input type="text" name="description">
@@ -27,7 +27,7 @@
     <td th:text="${pretendant.name}"></td>
     <td th:text="${pretendant.description}"></td>
     <td>
-      <form th:action="@{/pretendants/delete/{id}(id=${pretendant.id})}" method="post">
+      <form th:action="@{/pretendants/delete/{id}(id=${pretendant.id})}" method="post" th:if = "${voting.userId} == ${userId}">
         <input type="hidden" name="_method" value="delete" />
         <input type="hidden" name="votingId" th:value="${voting.id}">
         <button type="submit">Видалити</button>
@@ -37,8 +37,8 @@
 </table>
 
 
-<p>Create pretendant</p>
-<form th:action="@{/pretendants}" method="post">
+<p th:if = "${voting.userId} == ${userId}">Create pretendant</p>
+<form th:action="@{/pretendants}" method="post" th:if = "${voting.userId} == ${userId}">
   <input type="hidden" name="votingId" th:value="${voting.id}">
   <input type="text" name="name">
   <input type="text" name="description">

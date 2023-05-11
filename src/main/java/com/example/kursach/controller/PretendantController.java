@@ -54,6 +54,9 @@ public class PretendantController {
                              Principal principal) {
         boolean isAuthor = userService.isVotingsAuthor(votingId, principal.getName());
 
+        Long userId = userService.findByUsername(principal.getName()).getId();
+
+
         if (isAuthor) {
             pretendantService.deleteById(id);
             return "redirect:" + request.getHeader("Referer");
