@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "PRETENDENTS")
+@Table(name = "PRETENDANTS")
 @Data
-public class Pretendent {
+public class Pretendant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToMany(mappedBy = "pretendent", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "pretendant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Vote> votes = new ArrayList<>();
 
     @ManyToOne(optional = false)
