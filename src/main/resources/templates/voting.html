@@ -29,6 +29,7 @@
     <td>
       <form th:action="@{/pretendants/delete/{id}(id=${pretendant.id})}" method="post">
         <input type="hidden" name="_method" value="delete" />
+        <input type="hidden" name="votingId" th:value="${voting.id}">
         <button type="submit">Видалити</button>
       </form>
     </td>

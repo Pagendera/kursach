@@ -42,4 +42,10 @@ public class Voting {
     public int hashCode() {
         return getClass().hashCode();
     }
+
+    @ToString.Exclude
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
 }
