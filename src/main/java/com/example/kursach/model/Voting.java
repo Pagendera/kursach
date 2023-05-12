@@ -30,6 +30,9 @@ public class Voting {
     @Column(name = "description", nullable = false, length = 2048)
     private String description;
 
+    @OneToMany(mappedBy = "voting", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vote> votes = new ArrayList<>();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

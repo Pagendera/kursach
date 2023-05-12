@@ -10,10 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -29,38 +26,23 @@ public class PretendantController {
 
     @PostMapping
     public String createPretendant(@RequestParam Long votingId,
-                                   @RequestParam String name,
-                                   @RequestParam String description,
-                                   Principal principal) {
-        boolean isAuthor = userService.isVotingsAuthor(votingId, principal.getName());
+                                   @ModelAttribute Pretendant pretendant) {
 
 
-        if (isAuthor) {
-            Pretendant pretendant = new Pretendant();
-            pretendant.setName(name);
-            pretendant.setDescription(description);
-            pretendant.setVoting(votingService.findById(votingId));
+        pretendant.setVoting(votingService.findById(votingId));
 
-            pretendantService.save(pretendant);
+        pretendantService.save(pretendant);
 
-            return "redirect:/votings/" + votingId;
-        } else return "redirect:/error";
+        return "redirect:/votings/" + votingId;
     }
 
     @PostMapping("/delete/{id}")
     public String deleteById(@PathVariable Long id,
-                             @RequestParam Long votingId,
-                             HttpServletRequest request,
-                             Principal principal) {
-        boolean isAuthor = userService.isVotingsAuthor(votingId, principal.getName());
+                             HttpServletRequest request) {
 
-        Long userId = userService.findByUsername(principal.getName()).getId();
+        pretendantService.deleteById(id);
+        return "redirect:" + request.getHeader("Referer");
 
-
-        if (isAuthor) {
-            pretendantService.deleteById(id);
-            return "redirect:" + request.getHeader("Referer");
-        }else return "redirect:/error";
 
     }
 }

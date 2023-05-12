@@ -7,7 +7,7 @@ import org.hibernate.Hibernate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "VOTES")
+@Table(name = "VOTES", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "pretendant_id", "voting_id"}))
 @Getter
 @Setter
 @ToString
@@ -26,6 +26,11 @@ public class Vote {
     @ManyToOne(optional = false)
     @JoinColumn(name = "pretendant_id",  nullable = false)
     private Pretendant pretendant;
+
+    @ToString.Exclude
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "voting_id", nullable = false)
+    private Voting voting;
 
     @Override
     public boolean equals(Object o) {

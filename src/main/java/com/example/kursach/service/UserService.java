@@ -11,4 +11,6 @@ public interface UserService {
     boolean isVotingsAuthor(Long votingsId, String username);
 
     User findByUsername(String username);
+
+    User saveUser(User user);
 }
