@@ -1,14 +1,19 @@
 package com.example.kursach.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "PRETENDANTS")
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class Pretendant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +21,7 @@ public class Pretendant {
     private Long id;
 
     @OneToMany(mappedBy = "pretendant", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
     private List<Vote> votes = new ArrayList<>();
 
     @ManyToOne(optional = false)
@@ -28,4 +34,16 @@ public class Pretendant {
     @Column(name = "description", nullable = false, length = 1024)
     private String description;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Pretendant that = (Pretendant) o;
+        return getId() != null && Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

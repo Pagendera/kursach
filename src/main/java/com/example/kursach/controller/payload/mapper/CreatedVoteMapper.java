@@ -11,6 +11,7 @@ import java.util.List;
 public interface CreatedVoteMapper {
 
     @Mapping(target = "pretendantId", source = "pretendant.id")
+    @Mapping(target = "userId", source = "user.id")
     CreatedVote doPayload(Vote vote);
 
     List<CreatedVote> doPayload(List<Vote> votes);

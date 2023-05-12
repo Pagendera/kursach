@@ -12,4 +12,5 @@ public class CreatedVoting {
     private String name;
     private String description;
     private List<CreatedPretendant> createdPretendants;
+    private String userId;
 }

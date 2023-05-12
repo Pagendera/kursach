@@ -39,4 +39,11 @@ public class VoteServiceImpl implements VoteService {
     public void deleteById(Long id) {
         voteRepository.deleteById(id);
     }
+
+    @Override
+    public boolean existsByUserIdAndVotingId(Long userId, Long votingId) {
+        return voteRepository.existsByUserIdAndVotingId(userId, votingId);
+    }
+
+
 }

@@ -1,14 +1,19 @@
 package com.example.kursach.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "VOTINGS")
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class Voting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +21,7 @@ public class Voting {
     private Long id;
 
     @OneToMany(mappedBy = "voting", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
     private List<Pretendant> pretendants = new ArrayList<>();
 
     @Column(name = "name", nullable = false)
@@ -23,5 +29,26 @@ public class Voting {
 
     @Column(name = "description", nullable = false, length = 2048)
     private String description;
+
+    @OneToMany(mappedBy = "voting", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vote> votes = new ArrayList<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Voting voting = (Voting) o;
+        return getId() != null && Objects.equals(getId(), voting.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
+    @ToString.Exclude
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
 }

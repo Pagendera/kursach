@@ -16,4 +16,6 @@ public interface VoteService {
     Vote update(Vote vote);
 
     void deleteById(Long id);
+
+    boolean existsByUserIdAndVotingId(Long userId, Long votingId);
 }
