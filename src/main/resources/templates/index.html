@@ -1,38 +1,67 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Main page</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
+<header class="header">
+    <div class="container">
+        <h1 class="header__title">
+            Курсова робота на тему “Система онлайн голосувань”
+        </h1>
+    </div>
+</header>
 
-<table>
-    <tr>
-        <th>NAME</th>
-        <th>DESCRIPTION</th>
+<section class="votings">
+    <div class="container">
 
-    </tr>
-    <tr th:each="voting : ${votings}">
-        <td><a th:href="@{/votings/{id}(id=${voting.id})}" th:text="${voting.name}"></a></td>
-        <td th:text="${voting.description}"></td>
-        <td>
-            <form th:action="@{/votings/delete/{id}(id=${voting.id})}" method="post" th:if = "${voting.userId} == ${userId}">
-                <input type="hidden" name="_method" value="delete" />
-                <button type="submit">Видалити</button>
+        <div class="votings__inner">
+            <h2 class="votings__title">
+                Список наявних голосувань
+            </h2>
+            <ul class="votings__items" th:each="voting : ${votings}">
+                <li class="votings__items-item item-votings">
+                    <h3 class="votings__items-title" th:text="${voting.name}">
+                    </h3>
+                    <div class="item-votings__buttons">
+                        <a th:href="@{/votings/{id}(id=${voting.id})}" class="votings__items-link">
+                            Перейти до голосування
+                        </a>
+                        <form class="votings__items-form" th:action="@{/votings/delete/{id}(id=${voting.id})}" method="post" th:if = "${voting.userId} == ${userId}" >
+                            <input type="hidden" name="_method" value="delete" />
+                            <button class="votings__items-delete" type="submit">Видалити</button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="create">
+    <div class="container">
+        <div class="create__inner">
+            <h3 class="create__title">
+                Форма для створення голосування
+            </h3>
+            <form class="create__form" th:action="@{/votings}" method="post">
+                <div class="create__form-inputs">
+                    <input class="create__form-input" type="text" name="name" placeholder="Назва" required>
+                    <input class="create__form-input" type="text" name="description" placeholder="Опис" required>
+                </div>
+                <button class="create__form-btn" type="submit">Створити</button>
             </form>
+        </div>
+    </div>
+</section>
 
-        </td>
-
-    </tr>
-</table>
-
-<p>Create</p>
-<form th:action="@{/votings}" method="post">
-    <input type="text" name="name">
-    <input type="text" name="description">
-    <button type="submit">Створити голосування</button>
-</form>
 
 
 </body>
+
+
 </html>
+
