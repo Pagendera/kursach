@@ -12,23 +12,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/register")
 public class AuthController {
     private final UserService userService;
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
-    @PostMapping
+
+    @PostMapping("/register")
     public String register(@RequestParam String name,
-                           @RequestParam String password){
+                           @RequestParam String password) {
         User user = new User();
         user.setUsername(name);
         user.setPassword(passwordEncoder.encode(password));
 
         userService.saveUser(user);
-        return "index";
+        return "redirect:/login";
     }
 
-    @GetMapping
-    public String registerPage(){
+
+
+    @GetMapping("/login")
+    public String getLoginPage(){
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String getRegisterPage() {
         return "register";
+    }
+
+    @GetMapping("/logout")
+    public String logoutPage() {
+        return "logout";
     }
 }
