@@ -68,13 +68,25 @@
     margin-bottom: 70px;
 }
 
+.pretendants__info{
+    display: flex;
+
+}
 .pretendants__items-title{
     font-weight: 300;
     font-size: 44px;
     line-height: 53px;
+    margin-bottom: 10px;
+}
 
+.pretendants__items-info{
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 53px;
     margin-bottom: 30px;
 }
+
+
 
 .item-pretendants{
     margin-bottom: 80px;

@@ -21,8 +21,6 @@ public class PretendantController {
     private final VotingService votingService;
     private final PretendantService pretendantService;
 
-    private final UserService userService;
-
 
     @PostMapping
     public String createPretendant(@RequestParam Long votingId,

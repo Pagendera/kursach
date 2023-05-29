@@ -10,4 +10,5 @@ public class CreatedPretendant {
     private Long votingId;
     private String name;
     private String description;
+    private Integer countOfVotes;
 }

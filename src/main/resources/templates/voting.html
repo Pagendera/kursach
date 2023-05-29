@@ -20,6 +20,7 @@
 
     <p class="info__description" th:text="${voting.description}" />
 
+
   </div>
 </section>
 
@@ -31,6 +32,10 @@
     <ul class="pretendants__items" th:each="pretendant : ${pretendants}">
       <li class="pretendants__items-item item-pretendants">
         <h3 class="pretendants__items-title" th:text="${pretendant.name}" />
+
+        <p class="pretendants__items-info">Кількість голосів: <span th:text="${pretendant.countOfVotes}"></span></p>
+
+
 
         <div class="item-pretendants__buttons">
           <form  th:action="@{/votes}" method="post" th:if = "${!hasVoted}"   >
