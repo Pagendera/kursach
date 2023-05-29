@@ -41,6 +41,6 @@ public class AuthController {
 
     @GetMapping("/logout")
     public String logoutPage() {
-        return "logout";
+        return "redirect:/login";
     }
 }

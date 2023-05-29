@@ -2,6 +2,8 @@
 @import 'fonts.css';
 @import 'default.css';
 @import 'voting.css';
+@import 'login.css';
+@import 'register.css';
 
 .header__title{
     font-style: normal;
