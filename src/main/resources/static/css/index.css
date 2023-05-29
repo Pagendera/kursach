@@ -1,0 +1,117 @@
+@import 'normalize.css';
+@import 'fonts.css';
+@import 'default.css';
+@import 'voting.css';
+
+.header__title{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 60px;
+    line-height: 72px;
+    text-align: center;
+    margin: 0 0 180px;
+}
+
+.votings__title{
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 67px;
+    margin-bottom: 70px;
+
+    color: #6B080A
+}
+
+.votings__items-title{
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 53px;
+    margin-bottom: 30px;
+}
+
+.item-votings__buttons{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 70px;;
+}
+
+.votings__items-delete{
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #F8F8F8;
+    background: #AC070B;
+
+    box-shadow: 0px 4px 8px rgba(248, 38, 38, 0.25);
+    border-radius: 25px;
+    padding: 13px 26px;
+}
+
+.votings__items-link{
+    font-family: 'Montserrat';
+    border: 2px solid #AC070B;
+    border-radius: 25px;
+    padding: 13px 26px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    margin-right: 30px;
+}
+
+.create__inner{
+    border: 3px solid #AC070B;
+    filter: drop-shadow(0px 4px 15px rgba(201, 54, 54, 0.25));
+    border-radius: 15px;
+    padding: 60px 0;
+}
+
+.create__title {
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 53px;
+    text-align: center;
+    margin-bottom: 43px;
+}
+
+.create__form{
+    max-width: 825px;
+    margin: 0 auto;
+}
+
+.create__form-inputs{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 43px;
+}
+
+.create__form-input{
+    border: 2px solid #010101;
+    border-radius: 25px;
+    padding: 12px 10px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+
+    color: rgba(1, 1, 1, 0.5);
+    text-align: center;
+
+}
+
+.create__form-btn{
+    margin: 0 auto;
+    display: block;
+    background: #AC070B;
+
+
+    box-shadow: 0px 4px 8px rgba(248, 38, 38, 0.25);
+    border-radius: 25px;
+    padding: 13px 26px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 15px;
+
+    color: #F8F8F8;
+}
