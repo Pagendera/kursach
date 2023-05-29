@@ -20,10 +20,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().authenticated())
+                .authorizeHttpRequests()
+                .requestMatchers("/register").permitAll()
+                .anyRequest().authenticated()
+                .and()
                 .formLogin()
-                .defaultSuccessUrl("/votings");
+                .loginPage("/login")
+                .defaultSuccessUrl("/votings", true)
+                .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .permitAll();
         return http.build();
     }
 

@@ -1,55 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="${voting.name}"></title>
+  <meta charset="UTF-8">
+  <title th:text="${voting.name}" />
+  <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
-<p th:text="${voting.description}"></p>
-<div th:text="${voting.createdPretendants}"></div>
+<header class="header">
+  <div class="container">
+    <h1 class="header__title">
+      Курсова робота на тему “Система онлайн голосувань”
+    </h1>
+  </div>
+</header>
 
-<p th:if = "${voting.userId} == ${userId}">Update</p>
-<form th:action="@{/votings/update/{id}(id=${voting.id})}" method="post" th:if = "${voting.userId} == ${userId}">
-  <input type="hidden" name="_method" value="put" />
-  <input type="text" name="name">
-  <input type="text" name="description">
-  <button type="submit">Створити голосування</button>
-</form>
+<section class="info">
+  <div class="container">
+    <h1 class="info__title" th:text="${voting.name}" />
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th>NAME</th>
-    <th>DESCRIPTION</th>
-  </tr>
-  <tr th:each="pretendant : ${pretendants}">
-    <td th:text="${pretendant.id}"></td>
-    <td th:text="${pretendant.name}"></td>
-    <td th:text="${pretendant.description}"></td>
-    <td>
-      <form th:action="@{/pretendants/delete/{id}(id=${pretendant.id})}" method="post" th:if = "${voting.userId} == ${userId}">
-        <input type="hidden" name="_method" value="delete" />
+    <p class="info__description" th:text="${voting.description}" />
+
+
+  </div>
+</section>
+
+<section class="pretendants">
+  <div class="container">
+    <h2 class="pretendants__title">
+      Список наявних варіантів
+    </h2>
+    <ul class="pretendants__items" th:each="pretendant : ${pretendants}">
+      <li class="pretendants__items-item item-pretendants">
+        <h3 class="pretendants__items-title" th:text="${pretendant.name}" />
+
+        <p class="pretendants__items-info">Кількість голосів: <span th:text="${pretendant.countOfVotes}"></span></p>
+
+
+
+        <div class="item-pretendants__buttons">
+          <form  th:action="@{/votes}" method="post" th:if = "${!hasVoted}"   >
+            <input type="hidden" name="pretendantId" th:value="${pretendant.id}" >
+            <input type="hidden" name="votingId" th:value="${voting.id}" >
+            <button class="pretendants__items-vote" type="submit">Проголосувати!!</button>
+          </form>
+
+          <form class="pretendants__items-form" th:action="@{/pretendants/delete/{id}(id=${pretendant.id})}" method="post" th:if = "${voting.userId} == ${userId}" >
+            <input type="hidden" name="_method" value="delete" />
+            <input type="hidden" name="votingId" th:value="${voting.id}">
+            <button class="pretendants__items-delete" type="submit">Видалити</button>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="forms" th:if = "${voting.userId} == ${userId}">
+  <div class="container">
+    <form class="forms__form" th:action="@{/votings/update/{id}(id=${voting.id})}" method="post">
+      <h3 class="forms__form-title">
+        Форма для оновлення голосування
+      </h3>
+      <div class="form-forms__inputs">
+        <input type="hidden" name="_method" value="put" />
+        <input type="text" class="forms__form-input" placeholder="Назва" name="name">
+        <input type="text" class="forms__form-input" placeholder="Опис" name="description">
+        <button class="forms__form-btn" type="submit">Оновити</button>
+      </div>
+    </form>
+    <form class="forms__form" th:action="@{/pretendants}" method="post">
+      <h2 class="forms__form-title">
+        Форма для створення варіантів
+      </h2>
+      <div class="form-forms__inputs">
         <input type="hidden" name="votingId" th:value="${voting.id}">
-        <button type="submit">Видалити</button>
-      </form>
-    </td>
-    <td>
-      <form th:action="@{/votes}" method="post" th:if = "${!hasVoted}"  >
-        <input type="hidden" name="pretendantId" th:value="${pretendant.id}" >
-        <input type="hidden" name="votingId" th:value="${voting.id}" >
-        <button type="submit">Проголосувати!!</button>
-      </form>
-    </td>
-  </tr>
-</table>
-
-
-<p th:if = "${voting.userId} == ${userId}">Create pretendant</p>
-<form th:action="@{/pretendants}" method="post" th:if = "${voting.userId} == ${userId}">
-  <input type="hidden" name="votingId" th:value="${voting.id}">
-  <input type="text" name="name">
-  <input type="text" name="description">
-  <button type="submit">Створити претендента</button>
-</form>
+        <input type="text" class="forms__form-input" placeholder="Назва" name="name">
+        <input type="text" class="forms__form-input" placeholder="Опис" name="description">
+        <button class="forms__form-btn" type="submit">Створити</button>
+      </div>
+    </form>
+  </div>
+</section>
 </body>
 </html>

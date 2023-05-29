@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface CreatedPretendantMapper {
     @Mapping(target = "votingId", source = "voting.id")
+    @Mapping(target = "countOfVotes", expression = "java(pretendant.getVotes().size())")
     CreatedPretendant doPayload(Pretendant pretendant);
 
     List<CreatedPretendant> doPayload(List<Pretendant> pretendants);

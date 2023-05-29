@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/montserrat-v25-cyrillic_latin-500.woff2') format('woff2'), 
+         url('../fonts/montserrat-v25-cyrillic_latin-500.woff') format('woff'); 
+  
+        }
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/montserrat-v25-cyrillic_latin-600.woff2') format('woff2'), 
+         url('../fonts/montserrat-v25-cyrillic_latin-600.woff') format('woff');
+  }
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/montserrat-v25-cyrillic_latin-700.woff2') format('woff2'), 
+         url('../fonts/montserrat-v25-cyrillic_latin-700.woff') format('woff'); 
+  }
+ 
+@font-face {
+    font-family: 'Mak';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Mak'), url('../fonts/MAK.otf') format('truetype');
+  }
+  
+@font-face {
+    font-family: 'Mak';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Mak'), url('../fonts/MAK-bold.otf') format('truetype');
+  }

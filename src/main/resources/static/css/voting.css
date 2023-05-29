@@ -1,0 +1,125 @@
+.info__title{
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 67px;
+
+    color: #6B080A;
+    margin-bottom: 32px;
+}
+
+.info__description{
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 53px;
+    margin-bottom: 100px;
+}
+
+.forms__form-title{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 25px;
+}
+
+.forms__form{
+    margin-bottom: 80px;
+}
+
+.forms__form-input{
+    
+    order: 2px solid #010101;
+    border-radius: 25px;
+    padding: 12px 10px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+
+    color: rgba(1, 1, 1, 0.5);
+    text-align: center;
+    margin-right: 72px;
+}
+
+.forms__form-btn{
+    background: #AC070B;
+
+
+
+
+    box-shadow: 0px 4px 8px rgba(248, 38, 38, 0.25);
+    border-radius: 25px;
+    padding: 12px 26px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #F8F8F8;
+
+}
+
+.pretendants__title{
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 67px;
+
+    color: #6B080A;
+    margin-bottom: 70px;
+}
+
+.pretendants__info{
+    display: flex;
+
+}
+.pretendants__items-title{
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 53px;
+    margin-bottom: 10px;
+}
+
+.pretendants__items-info{
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 53px;
+    margin-bottom: 30px;
+}
+
+
+
+.item-pretendants{
+    margin-bottom: 80px;
+}
+
+.item-pretendants__buttons{
+    display: flex;
+    flex-direction: row;
+}
+
+.pretendants__items-vote{
+    border: 2px solid #AC070B;
+    border-radius: 25px;
+    padding: 13px 26px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    margin-right: 56px;
+}
+
+.pretendants__items-delete{
+    background: #AC070B;
+
+    box-shadow: 0px 4px 8px rgba(248, 38, 38, 0.25);
+    border-radius: 25px;
+    padding: 13px 26px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #F8F8F8;
+}
