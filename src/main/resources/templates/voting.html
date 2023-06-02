@@ -32,6 +32,7 @@
     <ul class="pretendants__items" th:each="pretendant : ${pretendants}">
       <li class="pretendants__items-item item-pretendants">
         <h3 class="pretendants__items-title" th:text="${pretendant.name}" />
+        <p class="pretendants__items-description" th:text="${pretendant.description}"></p>
 
         <p class="pretendants__items-info">Кількість голосів: <span th:text="${pretendant.countOfVotes}"></span></p>
 

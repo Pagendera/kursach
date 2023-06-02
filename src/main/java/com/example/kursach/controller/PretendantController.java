@@ -27,10 +27,12 @@ public class PretendantController {
                                    @ModelAttribute Pretendant pretendant) {
 
 
-        pretendant.setVoting(votingService.findById(votingId));
 
-        pretendantService.save(pretendant);
-
+        if (votingService.findById(votingId).getPretendants().stream().noneMatch(pretendant1 -> pretendant1.getName().equals(pretendant.getName())))
+        {
+            pretendant.setVoting(votingService.findById(votingId));
+            pretendantService.save(pretendant);
+        }
         return "redirect:/votings/" + votingId;
     }
 

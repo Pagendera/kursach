@@ -79,7 +79,7 @@
     margin-bottom: 10px;
 }
 
-.pretendants__items-info{
+.pretendants__items-description, .pretendants__items-info{
     font-weight: 300;
     font-size: 30px;
     line-height: 53px;
